@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'app-search',
@@ -9,9 +10,13 @@ export class SearchComponent implements OnInit {
 
   public categories: string[] = ['Characters', 'Comics', 'Creators', 'Events', 'Series', 'Stories']
 
-  constructor() { }
+  constructor(private searchService: SearchService) {
+
+  }
 
   ngOnInit(): void {
+    console.log(Date.now());
+
   }
 
 }
