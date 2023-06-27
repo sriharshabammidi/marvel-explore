@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { SharedService } from '../shared/shared.service';
+import { Response } from '../models/response';
+import { Character } from '../models/character';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -10,12 +13,11 @@ import { SharedService } from '../shared/shared.service';
 export class SearchService {
 
   constructor(private http: HttpClient, private sharedService: SharedService) {
-    this.http
-      .get<any>(`${environment.marvelApiUrl}characters${this.sharedService.getAuthParams()}`)
-      .subscribe(data => {
-        console.log(data);
-      });
+
   }
 
-
+  getCharacters(searchText: string): Observable<Response<Character>> {
+    return this.http
+      .get<Response<Character>>(`${environment.marvelApiUrl}characters${this.sharedService.getAuthParams()}&nameStartsWith=${searchText}`);
+  }
 }

@@ -1,87 +1,29 @@
 <div class="search-flex">
     <div>
-        <select class="marvel-select">
-            <option *ngFor="let category of categories">{{category}}</option>
+        <select class="marvel-select" [(ngModel)]="searchCategory" (change)="updateSearch()">
+            <option *ngFor="let category of categories" [value]="category">{{category}}</option>
         </select>
     </div>
     <div class="input-div">
-        <input type="text" class="search-input" placeholder="Search MARVEL">
-        <i class="material-symbols-outlined icon">
+        <input type="text" class="search-input" placeholder="Search MARVEL" (keyup)="updateSearch()"
+            [(ngModel)]="searchText">
+        <i (click)="updateSearch()" class="material-symbols-outlined icon">
             search
         </i>
     </div>
 </div>
-<div class="search-results">
-    <div class="result-content">
-        <img class="result-thumbnail" src="../../../assets/app-bg.png">
+<div class="search-results" *ngIf="characters && characters.length > 0">
+    <div class="result-content" *ngFor="let character of characters" (click)="ShowCharacter(character.id)">
+        <img class="result-thumbnail" src={{character.thumbnail.path}}.{{character.thumbnail.extension}}>
         <div class="result-detail">
             <div class="title-section">
-                <p class="result-title">Test</p>
+                <p class="result-title">{{character.name}}</p>
             </div>
             <div class="description-section">
                 <p class="result-description">
-                    Tony Stark is the genius inventor/billionaire/philanthropist owner of Stark Industries. With his
-                    super
-                    high-tech Iron
-                    Man suit, he is practically indestructible, able to fly, and has a large selection of weapons to
-
+                    {{character.description | truncate:451:'...'}}
                 </p>
             </div>
         </div>
-
-    </div>
-    <div class="result-content">
-        <img class="result-thumbnail" src="../../../assets/app-bg.png">
-        <div class="result-detail">
-            <div class="title-section">
-                <p class="result-title">Test</p>
-            </div>
-            <div class="description-section">
-                <p class="result-description">
-                    Tony Stark is the genius inventor/billionaire/philanthropist owner of Stark Industries. With his
-                    super
-                    high-tech Iron
-                    Man suit, he is practically indestructible, able to fly, and has a large selection of weapons to
-
-                </p>
-            </div>
-        </div>
-
-    </div>
-    <div class="result-content">
-        <img class="result-thumbnail" src="../../../assets/app-bg.png">
-        <div class="result-detail">
-            <div class="title-section">
-                <p class="result-title">Test</p>
-            </div>
-            <div class="description-section">
-                <p class="result-description">
-                    Tony Stark is the genius inventor/billionaire/philanthropist owner of Stark Industries. With his
-                    super
-                    high-tech Iron
-                    Man suit, he is practically indestructible, able to fly, and has a large selection of weapons to
-
-                </p>
-            </div>
-        </div>
-
-    </div>
-    <div class="result-content">
-        <img class="result-thumbnail" src="../../../assets/app-bg.png">
-        <div class="result-detail">
-            <div class="title-section">
-                <p class="result-title">Test</p>
-            </div>
-            <div class="description-section">
-                <p class="result-description">
-                    Tony Stark is the genius inventor/billionaire/philanthropist owner of Stark Industries. With his
-                    super
-                    high-tech Iron
-                    Man suit, he is practically indestructible, able to fly, and has a large selection of weapons to
-
-                </p>
-            </div>
-        </div>
-
     </div>
 </div>
