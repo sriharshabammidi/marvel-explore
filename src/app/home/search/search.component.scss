@@ -1,7 +1,6 @@
 .marvel-select {
     font-size: 24px;
     padding: 20px 50px 20px 20px;
-    background-color: white;
     font-family: 'Ubuntu';
     border-radius: 10px 0px 0px 10px;
     border: none;
@@ -20,14 +19,14 @@
 }
 
 .search-input {
-    font-size: 24px;
+    font-size: 18px;
     padding: 21px;
     min-width: 850px;
     border-radius: 0px 10px 10px 0px;
     font-family: 'Ubuntu';
     border: none;
     outline: none;
-    border-left: 1px solid lightgray;
+    border-left: 1px solid rgb(53, 53, 53);
 }
 
 .input-div {
@@ -52,12 +51,12 @@
 }
 
 .search-results {
-    background-color: white;
+    background-color: rgb(59, 59, 59);
     border-radius: 10px;
     max-height: 360px;
     overflow-y: auto;
     margin-top: 5px;
-    max-width: 1100px;
+    max-width: 1050px;
 
 }
 
@@ -65,6 +64,7 @@
     display: flex;
     align-items: stretch;
     cursor: pointer;
+    color: white;
 }
 
 .result-content:hover {
@@ -74,8 +74,8 @@
 }
 
 .result-description {
-    color: lightgray;
-    font-size: 18px;
+    color: white;
+    font-size: 12px;
     font-weight: bold;
     width: 100%;
     text-overflow: ellipsis;
@@ -83,18 +83,17 @@
 }
 
 .result-detail {
-    max-height: 40px;
+    max-height: 30px;
 }
 
 .result-title {
     font-weight: bolder;
-    color: white;
+    color: white !important;
     text-transform: capitalize;
     padding: 5px;
-    color: rgb(36, 35, 35);
     width: fit-content;
     margin: unset;
-    font-size: 36px;
+    font-size: 18px;
 }
 
 .title-section {
@@ -102,7 +101,7 @@
 }
 
 .result-thumbnail {
-    max-width: 13%;
+    max-width: 10%;
     margin: 10px;
     border-radius: 10px;
 }
