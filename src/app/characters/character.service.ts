@@ -17,4 +17,8 @@ export class CharacterService {
     return this.http
       .get<Response<Character>>(`${environment.marvelApiUrl}characters/${id}${this.sharedService.getAuthParams()}`);
   }
+
+  getResourceByUrl(url: string): Observable<Response<any>>{
+    return this.http.get<Response<any>>(`${url}${this.sharedService.getAuthParams()}` );
+  }
 }

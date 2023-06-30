@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card m-2 me-card-list" *ngFor="let item of listToDisplay">
+  <div class="card m-2 me-card-list" *ngFor="let item of listToDisplay" (click)="openResource(item.resourceURI)">
     <div class="card-body">
       <div class="card-text">{{item.name}}</div>
     </div>
