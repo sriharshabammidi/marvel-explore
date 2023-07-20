@@ -1,4 +1,3 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
@@ -20,13 +19,10 @@ $marvel-explore-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$marvel-explore-theme: mat.define-light-theme((
-  color: (
-    primary: $marvel-explore-primary,
-    accent: $marvel-explore-accent,
-    warn: $marvel-explore-warn,
-  )
-));
+$marvel-explore-theme: mat.define-light-theme((color: (primary: $marvel-explore-primary,
+        accent: $marvel-explore-accent,
+        warn: $marvel-explore-warn,
+      )));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -37,16 +33,25 @@ $marvel-explore-theme: mat.define-light-theme((
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 body {
-    background-image: url('./assets/app-bg-2.png');
-    //background-color: yellow;
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: 'Ubuntu';
-    font-weight: bold;
-    color: white;
+  background-image: url('./assets/app-bg-2.png');
+  //background-color: yellow;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Ubuntu';
+  font-weight: bold;
+  color: white;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -68,4 +73,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
+}
+
+.content {
+  padding-top: 20px;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  color: white;
+  font-weight: 800;
+  background-color: #ED1A23;
+  border-radius: 10px 10px 0px 0px;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-content {
+  color: white;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+  height: 530px;
+
+}
+
+:host ::ng-deep .mat-tab-body.mat-tab-body-active {
+  height: 530px;
+
 }

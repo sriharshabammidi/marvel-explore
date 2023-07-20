@@ -1,0 +1,24 @@
+.content {
+    padding-top: 20px;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    color: white;
+    font-weight: 800;
+    background-color: #ED1A23;
+    border-radius: 10px 10px 0px 0px;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-content {
+    color: white;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+    height: 530px;
+
+}
+
+:host ::ng-deep .mat-tab-body.mat-tab-body-active {
+    height: 530px;
+
+}

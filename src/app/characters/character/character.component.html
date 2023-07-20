@@ -1,4 +1,4 @@
-<div class="container content"  *ngIf="character">
+<div class="container content" *ngIf="character">
   <div class="row">
     <div class="col-4">
       <div class="card">
@@ -16,41 +16,42 @@
           <mat-tab-group>
             <mat-tab class="tab-marvel" label="Series">
               <ng-template mat-tab-label>
-                <span>Series</span>  <span class="badge text-bg-light ms-2">{{character.series.available}}</span>
+                <span>Series</span> <span class="badge text-bg-light ms-2">{{character.series.available}}</span>
               </ng-template>
               <div>
                 <ng-template matTabContent>
-                  <card-list [listToDisplay]="character.series.items"></card-list>
+                  <app-card-list [listToDisplay]="character.series.items"></app-card-list>
                 </ng-template>
               </div>
             </mat-tab>
             <mat-tab class="tab-marvel" label="Stories">
               <ng-template mat-tab-label>
-                <span>Stories</span>  <span class="badge text-bg-light ms-2">{{character.stories.available}}</span>
+                <span>Stories</span> <span class="badge text-bg-light ms-2">{{character.stories.available}}</span>
               </ng-template>
               <div>
                 <ng-template matTabContent>
-                  <card-list [listToDisplay]="character.stories.items"></card-list>
+                  <app-card-list [listToDisplay]="character.stories.items"></app-card-list>
                 </ng-template>
               </div>
             </mat-tab>
             <mat-tab class="tab-marvel" label="Comics">
               <ng-template mat-tab-label>
-                <span>Comics</span>  <span class="badge text-bg-light ms-2">{{character.comics.available}}</span>
+                <span>Comics</span> <span class="badge text-bg-light ms-2">{{character.comics.available}}</span>
               </ng-template>
               <div>
                 <ng-template matTabContent>
-                  <card-list [listToDisplay]="character.comics.items"></card-list>
+                  <app-card-list [listToDisplay]="character.comics.items"></app-card-list>
                 </ng-template>
               </div>
             </mat-tab>
             <mat-tab class="tab-marvel" label="Events">
               <ng-template mat-tab-label>
-                <span>Events</span>  <span class="badge text-bg-light ms-2">{{character.events.available}}</span>
+                <span>Events</span> <span class="badge text-bg-light ms-2">{{character.events.available}}</span>
               </ng-template>
               <div>
                 <ng-template matTabContent>
-                  <card-list [listToDisplay]="character.events.items"></card-list>
+                  <app-card-list (scrolledToBottom)='loadMore("Events")'
+                    [listToDisplay]="character.events.items"></app-card-list>
                 </ng-template>
               </div>
             </mat-tab>

@@ -1,0 +1,66 @@
+<div class="container content" *ngIf="creator">
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <img src="{{creator.thumbnail.path}}.{{creator.thumbnail.extension}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{creator.fullName}}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Dive into the world of <b style="color: #ED1A23;">{{creator.fullName}}</b>
+                    </h5>
+                    <mat-tab-group>
+                        <mat-tab class="tab-marvel" label="creator">
+                            <ng-template mat-tab-label>
+                                <span>creator</span> <span
+                                    class="badge text-bg-light ms-2">{{creator.series.available}}</span>
+                            </ng-template>
+                            <div>
+                                <ng-template matTabContent>
+                                    <app-card-list [listToDisplay]="creator.series.items"></app-card-list>
+                                </ng-template>
+                            </div>
+                        </mat-tab>
+                        <mat-tab class="tab-marvel" label="Stories">
+                            <ng-template mat-tab-label>
+                                <span>Stories</span> <span
+                                    class="badge text-bg-light ms-2">{{creator.stories.available}}</span>
+                            </ng-template>
+                            <div>
+                                <ng-template matTabContent>
+                                    <app-card-list [listToDisplay]="creator.stories.items"></app-card-list>
+                                </ng-template>
+                            </div>
+                        </mat-tab>
+                        <mat-tab class="tab-marvel" label="Comics">
+                            <ng-template mat-tab-label>
+                                <span>Comics</span> <span
+                                    class="badge text-bg-light ms-2">{{creator.comics.available}}</span>
+                            </ng-template>
+                            <div>
+                                <ng-template matTabContent>
+                                    <app-card-list [listToDisplay]="creator.comics.items"></app-card-list>
+                                </ng-template>
+                            </div>
+                        </mat-tab>
+                        <mat-tab class="tab-marvel" label="Events">
+                            <ng-template mat-tab-label>
+                                <span>Events</span> <span
+                                    class="badge text-bg-light ms-2">{{creator.events.available}}</span>
+                            </ng-template>
+                            <div>
+                                <ng-template matTabContent>
+                                    <app-card-list [listToDisplay]="creator.events.items"></app-card-list>
+                                </ng-template>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

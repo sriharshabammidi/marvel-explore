@@ -1,27 +1,33 @@
 <div class="search-flex">
     <div>
-        <select class="marvel-select" [(ngModel)]="searchCategory" (change)="updateSearch()">
+        <select class="marvel-select" [(ngModel)]="searchCategory" (change)="updateSearchAsync()">
             <option *ngFor="let category of categories" [value]="category">{{category}}</option>
         </select>
     </div>
     <div class="input-div">
-        <input type="text" class="search-input" placeholder="Search MARVEL" (keyup)="updateSearch()"
-            [(ngModel)]="searchText">
-        <i (click)="updateSearch()" class="material-symbols-outlined icon">
+        <input type="text" class="search-input" placeholder="Search MARVEL" (ngModelChange)="updateSearchAsync()"
+            [(ngModel)]="searchText" (keyup.ArrowDown)="onKeydown($event)" (keyup.ArrowUp)="onKeyup($event)"
+            (keyup.Enter)="onEnter($event)">
+        <i (click)="updateSearchAsync()" class="material-symbols-outlined icon">
             search
         </i>
     </div>
 </div>
-<div class="search-results" *ngIf="characters && characters.length > 0">
-    <div class="result-content" *ngFor="let character of characters" (click)="ShowCharacter(character.id)">
-        <img class="result-thumbnail" src={{character.thumbnail.path}}.{{character.thumbnail.extension}}>
+<div class="search-results" *ngIf="searchText && searchResults && searchResults.length > 0" (scroll)="onScroll($event)">
+    <div class="result-content" *ngFor="let searchResult of searchResults; let i = index" [id]="i"
+        [ngClass]="{'result-content-selected' : selectedDiv === i}" (click)="showResultDetails(searchResult.id)"
+        (mouseenter)="updateSelectedElement(i)">
+        <img class="result-thumbnail" *ngIf="searchResult.thumbnail"
+            src={{searchResult.thumbnail.path}}.{{searchResult.thumbnail.extension}}>
         <div class="result-detail">
-            <div class="title-section">
-                <p class="result-title">{{character.name}}</p>
+            <div class="title-section" [ngSwitch]="searchCategory">
+                <p class="result-title" *ngSwitchCase="'Characters'"> {{searchResult.name}} </p>
+                <p class="result-title" *ngSwitchCase="'Creators'"> {{searchResult.fullName}} </p>
+                <p class="result-title" *ngSwitchDefault> {{searchResult.title}} </p>
             </div>
             <div class="description-section">
                 <p class="result-description">
-                    {{character.description | truncate:451:'...'}}
+                    {{searchResult.description | truncate:451:'...'}}
                 </p>
             </div>
         </div>

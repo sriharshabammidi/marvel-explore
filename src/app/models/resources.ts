@@ -1,6 +1,6 @@
 import { Resource } from "./resource"
 
-export interface Stories {
+export interface Resources {
     available: number
     collectionURI: string
     items: Resource[]

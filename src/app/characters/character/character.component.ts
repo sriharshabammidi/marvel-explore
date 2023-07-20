@@ -31,4 +31,7 @@ export class CharacterComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.routeParameters.unsubscribe();
   }
+  loadMore(category: string) {
+    console.log(category);
+  }
 }

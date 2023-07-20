@@ -6,9 +6,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TruncatePipe implements PipeTransform {
 
   transform(value: string, maxLength: number, overflowIndicator: string): string {
-    return value.length < maxLength
-      ? value
-      : value.slice(0, maxLength) + overflowIndicator;
+    if (value) {
+      return value.length < maxLength
+        ? value
+        : value.slice(0, maxLength) + overflowIndicator;
+    }
+    else {
+      return value;
+    }
   }
 
 }
